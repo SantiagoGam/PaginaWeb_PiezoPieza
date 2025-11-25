@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comunidad - PiezoPieza</title>
+    <link rel="stylesheet" href="Styles/Styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>PIEZO<span class="highlight">PIEZA</span></h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="producto.html">Acerca de nuestro producto</a></li>
+                <li><a href="nosotros.html">Quiénes somos</a></li>
+                <li><a href="comunidad.html" class="active">Comunidad</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section class="page-header">
+            <h2>Comunidad</h2>
+            <p>Datos en tiempo real de nuestra red de usuarios</p>
+        </section>
+
+        <section class="community-content">
+            <div class="stats-intro">
+                <h3>Estadísticas de Generación de Energía</h3>
+                <p>Monitorea en tiempo real cómo nuestra comunidad está generando energía limpia. Cada gráfica representa datos reales de usuarios de PiezoKeys alrededor del mundo.</p>
+            </div>
+
+            <div class="grafana-container">
+                <div class="grafana-panel">
+                    <h4>Energía Generada Global</h4>
+                    <div class="grafana-embed">
+                        <iframe src="TU_URL_DE_GRAFANA_1" width="100%" height="400" frameborder="0"></iframe>
+                    </div>
+                </div>
+
+                <div class="grafana-panel">
+                    <h4>Usuarios Activos por Región</h4>
+                    <div class="grafana-embed">
+                        <iframe src="TU_URL_DE_GRAFANA_2" width="100%" height="400" frameborder="0"></iframe>
+                    </div>
+                </div>
+
+                <div class="grafana-panel">
+                    <h4>Pulsaciones por Minuto</h4>
+                    <div class="grafana-embed">
+                        <iframe src="TU_URL_DE_GRAFANA_3" width="100%" height="400" frameborder="0"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="community-stats">
+                <div class="stat-card">
+                    <h3>1,247</h3>
+                    <p>Usuarios Activos</p>
+                </div>
+                <div class="stat-card">
+                    <h3>3.2 kWh</h3>
+                    <p>Energía Generada Hoy</p>
+                </div>
+                <div class="stat-card">
+                    <h3>45,892</h3>
+                    <p>CO₂ Evitado (kg)</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 PiezoPieza. Energía sustentable al alcance de tus dedos.</p>
+    </footer>
+
+    <!-- Chat Flotante -->
+    <script src="js/chatbot-flotante.js"></script>
+
+</body>
+</html>
