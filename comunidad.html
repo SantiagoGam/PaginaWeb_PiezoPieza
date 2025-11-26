@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reseñas - PiezoPieza</title>
+    <link rel="stylesheet" href="Styles/Styles.css">
+    <style>
+        main {
+            padding: 40px 0 20px 0;
+        }
+        .reseñas-titulo {
+            color: #FFD25A;
+            text-align: center;
+            margin-top: 24px;
+            font-size: 2rem;
+        }
+        .reseñas-lista {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 32px;
+            margin-top: 36px;
+        }
+        .reseña {
+            background: #242424;
+            border-radius: 12px;
+            padding: 28px 24px 20px 24px;
+            max-width: 360px;
+            min-width: 260px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 3px 32px rgba(255, 210, 90, 0.08);
+        }
+        .reseña-foto {
+            width: 82px;
+            height: 82px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 16px;
+            border: 3px solid #FFD25A;
+            background: #111;
+        }
+        .reseña-texto h4 {
+            margin: 0;
+            color: #FFD25A;
+        }
+        .reseña-texto p {
+            color: #ededed;
+            font-size: 1rem;
+            margin: 10px 0 0 0;
+            text-align: center;
+        }
+        .reseña-stars {
+            margin: 6px 0 0 0;
+            color: #FFD25A;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>PIEZO<span class="highlight">PIEZA</span></h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="producto.html">Acerca de nuestro producto</a></li>
+                <li><a href="nosotros.html">Quiénes somos</a></li>
+                <li><a href="comunidad.html" class="active">Reseñas</a></li>
+            </ul>
+        </div>
+    </nav>
+    <main>
+        <h2 class="reseñas-titulo">Lo que opinan nuestros usuarios</h2>
+        <div class="reseñas-lista">
+            <div class="reseña">
+                <img src="images/Ana gutierrez.jpg" alt="Usuario 1" class="reseña-foto">
+                <div class="reseña-texto">
+                    <h4>Ana Gutierrez</h4>
+                    <div class="reseña-stars">★★★★★</div>
+                    <p>“¡Me encantó el teclado, genera conciencia y es único! Perfecto para estudiar y trabajar.”</p>
+                </div>
+            </div>
+            <div class="reseña">
+                <img src="images/Carlos rozo.jpeg" alt="Usuario 2" class="reseña-foto">
+                <div class="reseña-texto">
+                    <h4>Carlos Rozo</h4>
+                    <div class="reseña-stars">★★★★★</div>
+                    <p>“Ahora siento que aporto al medio ambiente cada vez que escribo. Muy innovador y funcional.”</p>
+                </div>
+            </div>
+            <div class="reseña">
+                <img src="images/LuciaMurcia.jpg" alt="Usuario 3" class="reseña-foto">
+                <div class="reseña-texto">
+                    <h4>Lucía Murcia</h4>
+                    <div class="reseña-stars">★★★★★</div>
+                    <p>“La atención fue excelente y el producto superó mis expectativas. Lo recomiendo.”</p>
+                </div>
+            </div>
+            <div class="reseña">
+                <img src="images/Andres Palomino.jpg" alt="Usuario 4" class="reseña-foto">
+                <div class="reseña-texto">
+                    <h4>Andrés Palomino</h4>
+                    <div class="reseña-stars">★★★★★</div>
+                    <p>“El diseño es espectacular, y saber que ayudo al planeta lo hace aún mejor.”</p>
+                </div>
+            </div>
+            <!-- Puedes copiar y pegar más bloqs .reseña arriba -->
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 PiezoPieza. Energía sustentable al alcance de tus dedos.</p>
+    </footer>
+    <!-- Chat Flotante -->
+    <script src="js/chatbot-flotante.js"></script>
+</body>
+</html>

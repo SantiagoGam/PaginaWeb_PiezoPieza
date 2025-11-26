@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teclado Piezoeléctrico - Energía al Escribir</title>
+    <link rel="stylesheet" href="Styles/Styles.css">
+    <style>
+        #keyboard-container {
+            width: 100%;
+            height: 300px;
+            background: #0a0a0a;
+            border: 2px solid #FFD25A;
+            border-radius: 10px;
+            margin: 40px 0;
+            box-shadow: 0 0 20px rgba(255, 210, 90, 0.2);
+            position: relative;
+            overflow: hidden;
+            cursor: default;
+        }
+
+        model-viewer {
+            width: 100%;
+            height: 100%;
+            --progress-bar-color: #FFD25A;
+        }
+
+        model-viewer.key-pressed {
+            filter: brightness(1.3) drop-shadow(0 0 30px rgba(255, 210, 90, 0.8));
+        }
+
+        model-viewer {
+            transition: filter 0.1s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <h1>PIEZO<span class="highlight">PIEZA</span></h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="active">Inicio</a></li>
+                <li><a href="producto.html">Acerca de nuestro producto</a></li>
+                <li><a href="nosotros.html">Quiénes somos</a></li>
+                <li><a href="comunidad.html">Comunidad</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h2>El Futuro de la Energía</h2>
+                <h3>Está en tus Manos</h3>
+                <p>Genera energía limpia mientras trabajas. Cada pulsación cuenta.</p>
+                <a href="producto.html" class="btn-primary">Descubre Más</a>
+            </div>
+            <div class="hero-image">
+                <div style="width: 100%; display: flex; flex-direction: column; align-items: flex-end;">
+                    <div id="keyboard-container">
+                        <model-viewer id="keyboard-viewer" src="models/keyboard.glb"
+                            alt="Teclado 3D PiezoKeys Piezoeléctrico" auto-rotate auto-rotate-delay="0"
+                            rotation-per-second="15deg" camera-controls touch-action="pan-y" disable-zoom="false"
+                            environment-image="neutral" exposure="1" shadow-intensity="1">
+                        </model-viewer>
+                    </div>
+                    <p style="text-align: right; color: #FFD25A; font-weight: bold; font-size: 14px; margin-top: 15px;">
+                        ¡Presione cualquier tecla!
+                    </p>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="features">
+            <div class="feature-card">
+                <h4>Tecnología Piezoeléctrica</h4>
+                <p>Convierte cada pulsación en energía eléctrica</p>
+            </div>
+            <div class="feature-card">
+                <h4>Diseño Ergonómico</h4>
+                <p>Comodidad y eficiencia en cada tecla</p>
+            </div>
+            <div class="feature-card">
+                <h4>Monitoreo en Tiempo Real</h4>
+                <p>Visualiza tu generación de energía</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Model by keshavV20 in Sketchfab.</p>
+        <p>&copy; 2025 PiezoPieza. Energía sustentable al alcance de tus dedos.</p>
+
+    </footer>
+
+    <!-- Google Model Viewer CDN -->
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+    <!-- Script para detectar teclas e iluminación -->
+    <script>
+        const viewer = document.getElementById('keyboard-viewer');
+        const container = document.getElementById('keyboard-container');
+        const pressedKeys = new Set();
+        let glowTimeout;
+
+        const keyMap = {
+            ' ': 'space',
+            'Enter': 'enter',
+            'Shift': 'shift',
+            'Control': 'ctrl',
+            'Alt': 'alt',
+            'Backspace': 'backspace',
+            'Tab': 'tab',
+            'CapsLock': 'caps',
+            'Escape': 'esc'
+        };
+
+        // Quitar el atributo de auto-rotate-pause (permite que siga rotando con teclas)
+        if (viewer) {
+            viewer.setAttribute('auto-rotate-pause', 'false');
+        }
+
+        // Detectar teclas presionadas
+        document.addEventListener('keydown', (e) => {
+            const key = e.key;
+            const displayKey = keyMap[key] || key.toLowerCase();
+
+            if (pressedKeys.has(key)) return;
+            pressedKeys.add(key);
+
+            console.log(`⌨️ Tecla presionada: ${displayKey}`);
+
+            // Aplicar iluminación (sin pausar rotación)
+            applyKeyGlow(displayKey);
+        });
+
+        // Detectar teclas soltadas
+        document.addEventListener('keyup', (e) => {
+            const key = e.key;
+            const displayKey = keyMap[key] || key.toLowerCase();
+
+            pressedKeys.delete(key);
+
+            console.log(`✅ Tecla soltada: ${displayKey}`);
+
+            // Si no hay más teclas presionadas, quitar brillo
+            if (pressedKeys.size === 0) {
+                removeKeyGlow();
+            }
+        });
+
+        // Función para aplicar el brillo
+        function applyKeyGlow(key) {
+            viewer.classList.add('key-pressed');
+            viewer.style.filter = 'brightness(1.4) drop-shadow(0 0 40px rgba(255, 210, 90, 1))';
+
+            console.log(`💡 Iluminando tecla: ${key}`);
+
+            if (glowTimeout) clearTimeout(glowTimeout);
+
+            glowTimeout = setTimeout(() => {
+                if (pressedKeys.size === 0) {
+                    removeKeyGlow();
+                }
+            }, 100);
+        }
+
+        // Función para quitar el brillo
+        function removeKeyGlow() {
+            viewer.classList.remove('key-pressed');
+            viewer.style.filter = 'brightness(1) drop-shadow(0 0 0px rgba(255, 210, 90, 0))';
+            console.log('✨ Brillo desactivado');
+        }
+
+        // Prevenir el cursor de grabbing/grabber
+        container.style.cursor = 'default';
+
+        // Evento cuando el modelo se carga
+        viewer?.addEventListener('load', () => {
+            console.log('✅ Modelo cargado correctamente - Rotación continua activada');
+        });
+
+        // Evento de error
+        viewer?.addEventListener('error', (e) => {
+            console.error('❌ Error cargando modelo:', e);
+        });
+
+        console.log('🎮 Sistema de detección de teclas inicializado');
+        console.log('📌 Presiona cualquier tecla para ver el efecto de iluminación');
+        console.log('🔄 El teclado sigue rotando mientras escribes');
+    </script>
+
+    <!-- Chat Flotante -->
+    <script src="js/chatbot-flotante.js"></script>
+
+</body>
+
+</html>
